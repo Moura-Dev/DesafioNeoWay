@@ -16,6 +16,8 @@ makediv = soup.find_all(["td", 'class=tmptabela"'])
 todascidades= []
 todasUF = {}
 
+teste = {makediv[i]: makediv[i + 1] for i in range(0, len(makediv), 2)}
+
 for tag in makediv:
     for item in tag:
         if item == "Não codificada por logradouros" or item == "Total do município" or item=="Codificado por logradouros" or item=="Codificada por logradouros" or item=="Total do município" or item=="Exclusiva da sede urbana":
@@ -25,9 +27,9 @@ for tag in makediv:
 
 todasUF = {todascidades[i]: todascidades[i + 1] for i in range(0, len(todascidades), 2)}
 
+print(teste)
+# documento = json.dumps(todasUF)
 
-documento = json.dumps(todasUF)
-
-arquivo = open(cidade+'.json', 'w')
-arquivo.write(documento)
-arquivo.close()
+# arquivo = open(cidade+'.json', 'w')
+# arquivo.write(documento)
+# arquivo.close()

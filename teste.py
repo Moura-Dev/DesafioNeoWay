@@ -12,12 +12,14 @@ url = 'http://www.buscacep.correios.com.br/sistemas/buscacep/resultadoBuscaFaixa
 
 htmlResponse = requests.post(url,data=payload).content
 soup = BeautifulSoup(htmlResponse, 'html.parser')
-makediv = soup.find_all(["td", "class='tmptabela"])
+makediv = soup.find_all(["td","td", "class='tmptabela"])
 for tag in makediv:
-    cidade = ""
-    cidade = tag.text
-    print(cidade)
+    todascidades= []
+    for item in tag:
+        if item == "Não codificada por logradouros" or item == "Total do município" or item=="Codificado por logradouros" or item=="Codificada por logradouros" or item=="Total do município" or item=="Exclusiva da sede urbana":
+            pass
+        else:
+            todascidades.append(item.strip())
+            #print(item)
 
-
-
-#print(makediv)
+    print(todascidades)
