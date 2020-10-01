@@ -1,8 +1,9 @@
-.idea
-idea
-venv
-.venv
-.vscode
-*__pycache__
-migrations
-.pytest_cache
+.idea/
+idea/
+venv/
+.venv/
+.vscode/
+*__pycache__/
+migrations/
+.pytest_cache/
+teste2.py
