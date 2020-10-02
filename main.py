@@ -4,11 +4,10 @@ from typing import ValuesView
 import requests
 from bs4 import BeautifulSoup
 from pprint import pprint
-import unicodedata
 import unidecode
 
-cidade = "SP"
-payload = {'UF':cidade,'qtdrow':'100','pagini':'1','pagfim':'100'}
+uf = "PA"
+payload = {'UF':uf,'qtdrow':'100','pagini':'1','pagfim':'100'}
 url = 'http://www.buscacep.correios.com.br/sistemas/buscacep/resultadoBuscaFaixaCEP.cfm'
 
 
@@ -32,6 +31,6 @@ todasUF = {todascidades[i]: todascidades[i + 1] for i in range(0, len(todascidad
 
 documento = json.dumps(todasUF)
 
-arquivo = open(cidade+'.json', 'w')
+arquivo = open(uf+'.json', 'w')
 arquivo.write(documento)
 arquivo.close()
