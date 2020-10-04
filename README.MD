@@ -15,8 +15,9 @@ passo a passo que mostram como fazer um env de desenvolvimento rodar
 ### Instale as seguintes bibliotecas Python:
 
  * **requests** - Requests é a única biblioteca HTTP
- * **lxml** - Biblioteca para processamento de XML e HTML;
  * **beautfulsoup4** - Biblioteca para extrair dados de arquivos HTML e XML;
+  * **JsonLines** - Biblioteca para criar arquivo jsonl;
+
 
 Com:
 ```
