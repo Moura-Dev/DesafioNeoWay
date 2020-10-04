@@ -1,7 +1,7 @@
-import json
 import re
 import requests
 from bs4 import BeautifulSoup
+import jsonlines
 
 url = 'http://www.buscacep.correios.com.br/sistemas/buscacep/resultadoBuscaFaixaCEP.cfm'
 UFs = (
@@ -25,7 +25,6 @@ def makeSoup(url, UF, inifim):
     htmlResponse = requests.post(url, data=payload).content
     soup = BeautifulSoup(htmlResponse, 'html.parser')
     if not soup.find_all(string=re.compile("developer")):
-        # if soup.findAll(text="developer"):
         make = soup.find_all(["td"])
         for tds in make:
             for td in tds:
@@ -35,9 +34,8 @@ def makeSoup(url, UF, inifim):
 
 def DumpJson(cidade, cidades, UF):
     cidades = {cidade[i]: cidade[i + 1] for i in range(0, len(cidade), 2)}
-    with open(UF+'.json', 'w', encoding="utf-8") as jp:
-        js = json.dumps(cidades, ensure_ascii=False)
-        jp.write(js)
+    with jsonlines.open(UF+'.jsonl', mode='w') as jp:
+        jp.write(cidades)
 
 
 for UF in UFs:

@@ -7,3 +7,5 @@ venv/
 migrations/
 .pytest_cache/
 teste2.py
+*.json
+*.jsonl
